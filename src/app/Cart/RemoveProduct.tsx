@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
 
-export default function RemoveProduct({ id, productName }: { id: string; productName: string }) {
+export default function RemoveProduct({ id, productName }: { id: string; productName?: string }) {
   const { setItemCart } = useCart()
   const [loading, setLoading] = useState(false)
 
