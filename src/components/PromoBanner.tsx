@@ -1,9 +1,19 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function PromoDoubleBanner() {
   return (
     <section className="mt-10 px-2 md:px-0">
-      <div className="grid gap-4 lg:gap-6 md:grid-cols-2">
+      <div className="grid gap-4 lg:gap-6 md:grid-cols-2 overflow-hidden">
         {/* Left banner - Fresh Organic Fruits */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#008C5F] to-[#00a86b] p-6 md:p-8 lg:p-9 text-white shadow-lg border border-white/20">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#008C5F] to-[#00a86b] p-6 md:p-8 lg:p-9 text-white shadow-lg border border-white/20"
+        >
           <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/5 rounded-full blur-3xl" />
           <div className="absolute -bottom-12 -left-8 w-32 h-32 bg-black/5 rounded-full blur-3xl" />
 
@@ -41,15 +51,21 @@ export default function PromoDoubleBanner() {
               </span>
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right banner - Exotic Vegetables */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FF4C4B] to-[#ff7a7a] p-6 md:p-8 lg:p-9 text-white shadow-lg border border-white/20">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FF5746] to-[#cb3939] p-6 md:p-8 lg:p-9 text-white shadow-lg border border-white/20"
+        >
           <div className="absolute -top-10 -left-10 w-32 h-32 bg-white/5 rounded-full blur-3xl" />
           <div className="absolute -bottom-14 -right-10 w-36 h-36 bg-black/5 rounded-full blur-3xl" />
 
           <div className="relative flex flex-col gap-4 max-w-md">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs md:text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full bg-white/20 backdrop-blur-md text-xs md:text-sm font-medium">
               <span className="inline-block w-2 h-2 rounded-full bg-[#ffeaa7]" />
               <span>New Arrivals</span>
             </div>
@@ -82,7 +98,7 @@ export default function PromoDoubleBanner() {
               </span>
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

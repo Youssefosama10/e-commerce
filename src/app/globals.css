@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+/* @import "shadcn/tailwind.css"; */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -120,10 +120,70 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
-  html {
-    @apply font-sans;
-  }
+
+}
+
+/* Hero Swiper custom styles */
+.hero-swiper {
+  position: relative;
+}
+
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  color: #009966;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.hero-swiper .swiper-button-next::after,
+.hero-swiper .swiper-button-prev::after {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero-swiper .swiper-pagination {
+  bottom: 12px !important;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.6);
+  opacity: 1;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+  width: 18px;
+  background-color: #ffffff;
+}
+
+/* Utility to hide scrollbars while keeping scroll behavior */
+.no-scrollbar {
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Edge */
+}
+
+/* Smooth fade for main product image */
+.product-main-image {
+  @apply transition-opacity duration-300 ease-out;
 }
