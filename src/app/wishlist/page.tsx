@@ -11,7 +11,7 @@ export default async function wishlist() {
 
   return (
     <div className="w-full">
-    <h1 className="text-2xl font-bold text-slate-800 mb-6 mt-4">
+    <h1 className="text-2xl font-bold text-slate-800 mb-6 mt-5">
       My Wishlist
     </h1>
   
