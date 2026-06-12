@@ -95,12 +95,13 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
  
   const handleBuyNow =  () => {
     // TODO: integrate with checkout flow
+
   }
 
   return (
     <div className="grid gap-8 md:grid-cols-12 ">
       {/* Left: Images gallery */}
-      <div className="md:col-span-5 flex flex-col gap-4">
+      <div className="md:col-span-5 overflow-hidden flex flex-col gap-4">
         <div className="bg-white rounded-2xl shadow-md p-6 flex items-center justify-center">
           {activeImage && (
             <img
@@ -160,9 +161,16 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
       )}
     </div>
 
-    <h1 className="text-xl  sm:text-2xl md:text-3xl font-semibold text-slate-900">
-      {product?.title}
-    </h1>
+    <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-900">
+  <span className="block md:hidden">
+    {product?.title?.split(" ").slice(0, 5).join(" ")}
+    {product?.title?.split(" ").length > 5 && "..."}
+  </span>
+
+  <span className="hidden md:block">
+    {product?.title}
+  </span>
+</h1>
 
     {/* Rating */}
     <div className="mt-3 flex flex-wrap items-center gap-2 sm:gap-3">
@@ -204,11 +212,15 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
       </span>
     </div>
 
-    {product?.description && (
-      <p className="text-sm text-slate-600 max-w-full md:max-w-xl">
-        {product.description}
-      </p>
-    )}
+    <p className="text-sm text-slate-600 max-w-full md:max-w-xl">
+  <span className="block md:hidden">
+    {product.description?.split(" ").slice(0, 5).join(" ")}...
+  </span>
+
+  <span className="hidden md:block">
+    {product.description}
+  </span>
+</p>
   </div>
 
   {/* Quantity & total price */}
