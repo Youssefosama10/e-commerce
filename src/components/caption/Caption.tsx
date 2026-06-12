@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaArrowRotateLeft, FaHeadset, FaShieldHalved, FaTruck } from 'react-icons/fa6';
 
 export default function Caption() {
 
@@ -6,22 +7,22 @@ export default function Caption() {
       {
         title: "Free Shipping",
         desc: "On orders over 500 EGP",
-        icon: "🚚", // يمكنك استبدالها بأيقونات Lucide أو FontAwesome
+        icon: <FaTruck className="text-green-500" />, // يمكنك استبدالها بأيقونات Lucide أو FontAwesome
       },
       {
         title: "Easy Returns",
         desc: "14-day return policy",
-        icon: "↺",
+        icon: <FaArrowRotateLeft className="text-green-500" />,
       },
       {
         title: "Secure Payment",
         desc: "100% secure checkout",
-        icon: "🛡️",
+        icon: <FaShieldHalved className="text-green-500" />,
       },
       {
         title: "24/7 Support",
         desc: "Contact us anytime",
-        icon: "🎧",
+        icon: <FaHeadset className="text-green-500" />,
       },
     ];
   return (

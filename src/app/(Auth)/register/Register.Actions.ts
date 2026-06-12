@@ -14,7 +14,7 @@ import { RegisterObjectType } from "./register.types";
        }
      )
       const finalRes = await res.json()
-      console.log("finalRes" , finalRes);
+      // console.log("finalRes form Register Action" , finalRes);
      return res.ok
    } catch (error) {
      

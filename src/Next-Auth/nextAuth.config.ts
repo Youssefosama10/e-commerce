@@ -8,6 +8,7 @@ import { jwtDecode } from 'jwt-decode'
       name: "Fresh Cart" ,
       credentials : 
       {
+      
         email : { label : "Email" , type : "email" } ,
         password : { label : "Password" , type : "password" } ,
       },
@@ -21,7 +22,7 @@ import { jwtDecode } from 'jwt-decode'
           }
         )
         const finalRes = await response.json()
-        console.log("finalRes" , finalRes);
+        // console.log("finalRes from Next-Auth" , finalRes);
 
         if(response.ok)
         {
@@ -34,6 +35,7 @@ import { jwtDecode } from 'jwt-decode'
         return null 
       }
     })
+  
   ],
    
   jwt : {
@@ -78,5 +80,4 @@ import { jwtDecode } from 'jwt-decode'
    },
 
   
-    
 }

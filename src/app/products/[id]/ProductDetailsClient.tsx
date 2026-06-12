@@ -1,5 +1,6 @@
 "use client"
 
+import { useCart } from '_/app/_Context/cardtContext';
 import { AddProductCard } from '_/app/Cart/CratActions'
 import { useEffect, useMemo, useState } from 'react'
 import {
@@ -15,6 +16,7 @@ import {
 } from 'react-icons/fa'
 // import { FidgetSpinner } from 'react-loader-spinner'
 import { MdDone } from "react-icons/md";
+import { toast } from 'react-toastify';
 
 type ProductDetailsClientProps = {
   product: any
@@ -64,10 +66,14 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
     })
   }
   const [addcard, setaddcard] = useState(false)
+  const { setItemCart} = useCart()
 
   const  handleAddToCart = async () => {
     setaddcard(true)
     await AddProductCard(product.id)
+    const newItem =  await AddProductCard(product.id)
+    setItemCart(newItem)
+    toast.success("Product added successfully to your cart")
     setaddcard(false) 
   }
 
@@ -76,7 +82,7 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
   }
 
   return (
-    <div className="grid gap-8 md:grid-cols-12">
+    <div className="grid gap-8 md:grid-cols-12 ">
       {/* Left: Images gallery */}
       <div className="md:col-span-5 flex flex-col gap-4">
         <div className="bg-white rounded-2xl shadow-md p-6 flex items-center justify-center">

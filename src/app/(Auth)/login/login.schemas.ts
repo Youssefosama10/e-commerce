@@ -2,7 +2,7 @@ import * as zod from 'zod'
  export const LoginSchema = zod.object({
 
   email: zod.email('Email is invalid').nonempty('Email is required'),
-
+  
   password: zod
     .string()
     .nonempty('password is required ')

@@ -7,7 +7,7 @@ const allCategories = await GetProductCategories()
    
   return (
 <>
-<div className="bg-green-600 text-white p-8 ">
+<div className="bg-green-500 text-white p-8 ">
       
       {/* Breadcrumb */}
       <div className="text-sm mb-6 opacity-80">

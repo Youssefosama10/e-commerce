@@ -119,6 +119,7 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+
   }
 
   body {
@@ -141,6 +142,23 @@
   background-color: #ffffff;
   color: #009966;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* xs */
+@media screen and (max-width:640px) {
+  .hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev 
+{
+  display: none;
+}
+}
+/* sm  */
+@media screen and (min-width:640px) and (max-width:768px) {
+  .hero-swiper .swiper-button-next,
+  .hero-swiper .swiper-button-prev 
+  {
+    display: none;
+  }
 }
 
 .hero-swiper .swiper-button-next::after,

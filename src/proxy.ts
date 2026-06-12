@@ -15,7 +15,4 @@ export async function proxy(req : NextRequest)
   return NextResponse.redirect(`${process.env.NEXTAUTH_URL}login`)
 }
 
-export const config = 
-{
-  matcher : [ "/Cart" ]
-}
+export const config = { matcher : [ "/Cart" ] }

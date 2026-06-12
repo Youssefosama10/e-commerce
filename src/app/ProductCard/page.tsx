@@ -22,8 +22,7 @@ export default function ProductCard( {product}: ProductCardProps ) {
       const newItem =  await AddProductCard(product.id)
       if(newItem != false)
       {
-        
-        toast.success("The product has been added")
+        toast.success("Product added successfully to your cart")
         setItemCart(newItem)
       }
       else
@@ -59,14 +58,25 @@ export default function ProductCard( {product}: ProductCardProps ) {
           
             className="bg-white rounded-2xl shadow-md p-4 flex flex-col justify-between min-h-[320px] relative"
           >
+            
+            
             {/* Image + side action icons */}
             <div className="relative flex justify-center items-start mb-4">
+
+            {product.priceAfterDiscount && (
+  <div className="absolute left-0 top-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md z-10">
+    -
+    {Math.round(
+      ((product.price - product.priceAfterDiscount) / product.price) * 100
+    )}
+    %
+  </div>
+)}
               <img
                 src={product.imageCover}
                 alt={product.title}
                 className="h-55 object-contain"
               />
-
               <div className="absolute right-0 top-0 flex flex-col space-y-2">
                 <button
                 onClick={addCard}

@@ -10,7 +10,7 @@ export async function AddProductCard( id : string )
   
   
   const tokenuser = await userToken()
-  console.log("test" , tokenuser);
+  // console.log("test" , tokenuser);
 
  if( tokenuser ) 
  {
@@ -73,7 +73,7 @@ export async function DeleteProduct(productId : string)
       if(res.ok)
       {
        const finalRes = await res.json()
-       console.log("finalRes Delete" , finalRes);
+      //  console.log("finalRes Delete" , finalRes);
        revalidatePath('/Cart')
        return finalRes.numOfCartItems
       }

@@ -18,6 +18,7 @@ import { lazy, Suspense } from "react";
 import { FidgetSpinner } from "react-loader-spinner";
 import MOBILEAPP from "_/components/mobile/mobile";
 import Caption from "_/components/caption/Caption";
+import CaptionTow from "_/components/caption-tow/Caption";
 
 const Categorylazy = lazy(() => import("_/components/Category"))
 
@@ -33,7 +34,7 @@ export default async function HomePage() {
   return (
 
     <>
-      <div className="mb-10">
+      <div>
 
         <MySwiper
           slides={[
@@ -65,7 +66,9 @@ export default async function HomePage() {
         />
       </div>
 
+      <CaptionTow />
 
+      
       <Suspense fallback={<FidgetSpinner />}>
         <Categorylazy />
       </Suspense>

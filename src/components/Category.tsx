@@ -15,8 +15,8 @@ export default async function Category() {
         </h2>
 
         <Link
-          href="/products"
-          className="text-sm md:text-base text-[#009966] hover:underline flex items-center gap-1"
+          href="/AllCategories"
+          className="text-sm md:text-base text-[#009966]  flex items-center gap-1"
         >
           View All Categories
           <span aria-hidden>→</span>
@@ -27,7 +27,7 @@ export default async function Category() {
         {visibleCategories.map((category) => (
           <Link
             key={category._id}
-            href={`/products?category=${category._id}`}
+         href=''
             className="group bg-white rounded-2xl shadow-sm border border-gray-100 p-4 flex flex-col items-center justify-between hover:shadow-md hover:-translate-y-1 transition duration-200"
           >
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden mb-3">

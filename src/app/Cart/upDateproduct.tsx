@@ -11,7 +11,7 @@ export default function UpDateproduct( { isIncrement = false , id , count } :  {
 
   return (
     <div>
-       <button onClick={handleupDate} disabled={ count <= 0} className="px-2 py-1 border cursor-pointer rounded">
+       <button onClick={handleupDate} disabled={ count <= 0} className="px-2  py-1 border cursor-pointer rounded">
         { isIncrement ? <FaMinus />   :    <FaPlus /> }
        </button>
     </div>

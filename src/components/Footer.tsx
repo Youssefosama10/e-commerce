@@ -56,6 +56,7 @@ export default function Footer() {
       },
       {
         title: "Account",
+
         links: ["My Account", "Order History", "Wishlist", "Shopping Cart", "Sign In", "Create Account"],
       },
       {
@@ -71,7 +72,8 @@ export default function Footer() {
               key={i}
               className="hover:text-green-400 cursor-pointer transition"
             >
-              <Link href={`/${link.toLowerCase().replace(/ /g, '-')}`}>{link}</Link>
+              <Link href={`/${link.toLowerCase().replace(/ /g, '-')  }`}>{link}</Link>
+              {/* <Link href={`/${section.links[index]}`}>{link}</Link> */}
             
             </li>
           ))}

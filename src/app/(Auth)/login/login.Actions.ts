@@ -1,11 +1,10 @@
 'use server'
-
 import { cookies } from "next/headers";
-import { LoginObjectType } from "./register.types";
+import { LoginObjectType } from "./login.types";
 
 
 
- export  async function  LoginActions(data : LoginObjectType)
+ export async function LoginActions(data : LoginObjectType)
 {
   try {
     const res = await fetch("https://ecommerce.routemisr.com/api/v1/auth/signin" , 
@@ -16,7 +15,7 @@ import { LoginObjectType } from "./register.types";
        }
      )
       const finalRes = await res.json()
-      console.log("finalRes" , finalRes);
+      // console.log("finalRes form Login Action" , finalRes);
 
      if(res.ok)
      {

@@ -24,8 +24,8 @@ export default function MobileApp() {
 
         {/* ── LEFT: Newsletter ── */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 flex flex-col justify-between"
@@ -95,10 +95,10 @@ export default function MobileApp() {
 
         {/* ── RIGHT: Mobile App Dark Card ── */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
           className="rounded-2xl p-8 flex flex-col justify-between relative overflow-hidden"
           style={{
             background: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #1a2f3a 100%)",

@@ -7,7 +7,7 @@ export async function userToken(): Promise< string | null >
 
  let NextAuthToken = cookie.get("next-auth.session-token")?.value || cookie.get("__Secure-next-auth.session-token")?.value
  
- console.log(NextAuthToken);
+//  console.log(NextAuthToken);
  
 
  

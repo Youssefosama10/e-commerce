@@ -1,6 +1,6 @@
 
 // import { cookies } from "next/headers"
-import { Brands, CartResponse, CategoryType, ProductType, userwishlist } from "./types"
+import { Brands , CartResponse , CategoryType , ProductType , userwishlist } from "./types"
 import { userToken } from "_/app/utlis"
 
 export async function GetAllProducts(): Promise<ProductType[] | undefined> {
@@ -15,6 +15,7 @@ export async function GetAllProducts(): Promise<ProductType[] | undefined> {
   }
 }
 
+// -----------------------------------------------------------------------------------------
 export async function GetProductDetails(id: string): Promise<ProductType | undefined> {
   try {
     const res = await fetch(`https://ecommerce.routemisr.com/api/v1/products/${id}`, { cache: 'force-cache' })
@@ -27,6 +28,8 @@ export async function GetProductDetails(id: string): Promise<ProductType | undef
   }
 }
 
+
+// -----------------------------------------------------------------------------------------
 export async function GetProductCategories(): Promise<CategoryType[] | undefined> {
 
   try {
@@ -40,7 +43,7 @@ export async function GetProductCategories(): Promise<CategoryType[] | undefined
   }
 }
 
-
+// -----------------------------------------------------------------------------------------
 export async function GetUserCart(): Promise<CartResponse | undefined> {
   const Tokenuser = await userToken()
 
@@ -51,7 +54,7 @@ export async function GetUserCart(): Promise<CartResponse | undefined> {
         // next: { tags : [ 'GetUserCart' ] }
       })
       const finalRes = await res.json()
-      console.log("finalRes to card", finalRes);
+      // console.log("finalRes to card", finalRes);
       return finalRes.data
 
     } catch (error) {
@@ -62,15 +65,15 @@ export async function GetUserCart(): Promise<CartResponse | undefined> {
 
 }
 
-
+// -----------------------------------------------------------------------------------------
 export default async function GetAllBrands(): Promise<Brands[] | undefined> {
   try {
-    const response = await fetch("https://ecommerce.routemisr.com/api/v1/brands")
+    const response = await fetch("https://ecommerce.routemisr.com/api/v1/brands" , { cache : "force-cache" })
 
     if (response.ok) {
       const finalResult = await response.json()
       return finalResult.data
-      console.log("finalResult form Brand", finalResult.data);
+      // console.log("finalResult form Brand", finalResult.data);
     }
 
   } catch (error) {
@@ -78,7 +81,7 @@ export default async function GetAllBrands(): Promise<Brands[] | undefined> {
   }
 }
 
-
+// -----------------------------------------------------------------------------------------
 export async function Getuserwishlist(): Promise<userwishlist[] | undefined> {
   const tkn = await userToken()
 
@@ -91,7 +94,7 @@ export async function Getuserwishlist(): Promise<userwishlist[] | undefined> {
 
       if (res.ok) {
         const finalRes = await res.json()
-        console.log("finalRes form userwishlist", finalRes);
+        // console.log("finalRes form userwishlist", finalRes);
         return finalRes.data
       }
 
@@ -100,4 +103,5 @@ export async function Getuserwishlist(): Promise<userwishlist[] | undefined> {
     }
   }
 }
+
 

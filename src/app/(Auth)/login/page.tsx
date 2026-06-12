@@ -43,13 +43,13 @@ export default function LoginPage() {
 
         {/* Right section - Login card */}
         <section className="w-full lg:w-1/2 border-t lg:border-t-0 lg:border-l border-gray-100 px-8 py-10 lg:px-10 lg:py-12 bg-white rounded-2xl shadow-md flex flex-col">
-          <Link href="/" className="text-2xl font-bold text-[#00B853] mb-2">
+          <Link href="/" className="text-2xl text-center font-bold text-[#00B853] mb-2">
             FreshCart
           </Link>
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-1">
+          <h2 className="text-xl text-center md:text-2xl font-bold text-gray-900 mb-1">
             Welcome Back!
           </h2>
-          <p className="text-sm text-gray-600 mb-6">
+          <p className="text-sm text-center text-gray-600 mb-6">
             Sign in to continue your fresh shopping experience
           </p>
 

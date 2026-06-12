@@ -15,17 +15,33 @@ import {
   Gift,
   HeadphonesIcon,
   Heart,
+  Home,
+  LayoutGrid,
   Mail,
+  Menu,
   Phone,
   ShoppingCart,
+  Store,
+  Tag,
   Truck,
   UserPlus,
   UserRound,
+  X,
 } from "lucide-react"
 import { signOut, useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import { useContext } from "react"
-import { CartContext, useCart, useWishlist } from "_/app/_Context/cardtContext"
+import { useState } from "react"
+import { useCart, useWishlist } from "_/app/_Context/cardtContext"
+import { IoIosLogOut } from "react-icons/io";
+
+const categoryLinks = [
+  { label: "All Categories", href: "/AllCategories" },
+  { label: "Electronics", href: "/Electronics" },
+  { label: "Women's Fashion", href: "/WomensFashion" },
+  { label: "Men's Fashion", href: "/MensFashion" },
+  { label: "Brands", href: "/brands" },
+  { label: "Beauty & Health", href: "/Beauty&Health" },
+]
 
 // const categories: { title: string; href: string }[] = [
 //   {
@@ -59,9 +75,11 @@ import { CartContext, useCart, useWishlist } from "_/app/_Context/cardtContext"
 export default function Navbar() {
 
    const router =  useRouter()
+   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
  async function handleLogOut()
   {
+   setIsMobileMenuOpen(false)
    await signOut( { redirect: false } )
    router.push('/login')
   }
@@ -73,6 +91,10 @@ const userName = session.data?.user?.name
 const { ItemCart } = useCart()
 
    const { wishlistNumber } = useWishlist()
+
+   function closeMobileMenu() {
+     setIsMobileMenuOpen(false)
+   }
 
 
   return (
@@ -117,7 +139,7 @@ const { ItemCart } = useCart()
 
             { isUserauthenticated ? 
             <button onClick={handleLogOut} className="flex items-center cursor-pointer gap-1 hover:text-red-500">
-              <UserPlus className="h-3 w-3" />
+              <IoIosLogOut  />
               <span>Log Out</span>
             </button> :  <Link href="/register" className="flex items-center gap-1 hover:text-emerald-500">
               <UserPlus className="h-3 w-3" />
@@ -127,9 +149,10 @@ const { ItemCart } = useCart()
         </div>
       </div>
 
+      <div className="sticky top-0 z-500">
       <NavigationMenu
         viewport={false}
-        className="w-full max-w-none items-center justify-between bg-white px-6 py-3 shadow-sm sticky z-500 top-0"
+        className="w-full max-w-none items-center justify-between bg-white px-6 py-3 shadow-sm"
       >
       <div className="flex flex-1 items-center gap-4">
         <Link href="/" className="flex items-center gap-2">
@@ -156,7 +179,34 @@ const { ItemCart } = useCart()
         </div>
       </div>
 
-      <NavigationMenuList className="ml-6 flex items-center gap-4 text-sm text-gray-700">
+      <div className="ml-auto flex items-center gap-2 md:hidden">
+        <Link href="/wishlist" className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200">
+          <Heart className="h-4 w-4" />
+          {isUserauthenticated && !!wishlistNumber && (
+            <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-semibold text-white">
+              {wishlistNumber}
+            </span>
+          )}
+        </Link>
+        <Link href="/Cart" className="relative flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-500 hover:bg-emerald-100">
+          <ShoppingCart className="h-4 w-4" />
+          {isUserauthenticated && !!ItemCart && (
+            <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-semibold text-white">
+              {ItemCart}
+            </span>
+          )}
+        </Link>
+        <button
+          type="button"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200"
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      <NavigationMenuList className="ml-6 hidden items-center gap-4 text-sm text-gray-700 md:flex">
         <NavigationMenuItem className="hidden md:flex">
           <NavigationMenuLink asChild>
             <Link
@@ -193,34 +243,35 @@ const { ItemCart } = useCart()
     </li>
 
     <li>
-      <Link href="" className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition">
+      <Link href="/Electronics" className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition">
         Electronics
       </Link>
     </li>
 
     <li>
-      <Link href="" className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition whitespace-nowrap">
+      <Link href="/WomensFashion" className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition whitespace-nowrap">
         Women's Fashion
       </Link>
     </li>
 
     <li>
-      <Link href="" className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition whitespace-nowrap">
+      <Link href="/MensFashion" className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition whitespace-nowrap">
         Men's Fashion
       </Link>
     </li>
 
     <li>
-      <Link href="" className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition">
+      <Link href="/brands" className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition">
+        Brandes
+      </Link>
+    </li>
+    
+    <li>
+      <Link href=" /Beauty&Health " className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition">
         Beauty & Health
       </Link>
     </li>
 
-    <li>
-      <Link href="" className="block px-2 py-1.5 rounded-md hover:bg-green-100 hover:text-green-500 transition">
-        Brandes
-      </Link>
-    </li>
 
   </ul>
 </NavigationMenuContent>
@@ -270,14 +321,14 @@ const { ItemCart } = useCart()
           href='/Cart'
             className="relative cursor-pointer flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-500 hover:bg-emerald-100"
           >
-            <ShoppingCart className="h-4 w-4" />
-           {isUserauthenticated && ItemCart &&  <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-semibold text-white">
-              {ItemCart}
+            <ShoppingCart className="h-4 w-4 " />
+           {isUserauthenticated && !!ItemCart &&  <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-semibold text-white">
+              {ItemCart}  
             </span>}
           </Link>
         </NavigationMenuItem>
 
-        <NavigationMenuItem>
+        <NavigationMenuItem className="hidden md:flex">
          { isUserauthenticated ?   <Button
             variant="default"
             size="lg"
@@ -285,19 +336,108 @@ const { ItemCart } = useCart()
           >
             <UserRound className="mr-2 h-4 w-4" />
            { userName }
-          </Button> :   <Button
+          </Button> :  <Link href="/login">
+          
+          
+          <Button
             variant="default"
             size="lg"
-            className="ml-1 rounded-full bg-emerald-500 px-5 text-sm font-semibold text-white hover:bg-emerald-600"
+            className="ml-1 rounded-full cursor-pointer bg-emerald-500 px-5 text-sm font-semibold text-white hover:bg-emerald-600"
           >
             <UserRound className="mr-2 h-4 w-4" />
             Sign In
-          </Button> }
+          </Button>
+          
+          </Link> }
         </NavigationMenuItem>
       </NavigationMenuList>
 
       </NavigationMenu>
+
+      {isMobileMenuOpen && (
+        <div className="md:hidden border-t border-gray-200 bg-white px-4 py-2 shadow-md">
+          <MobileNavLink href="/" icon={Home} label="Home" onNavigate={closeMobileMenu} />
+          <MobileNavLink href="/shop" icon={Store} label="Shop" onNavigate={closeMobileMenu} />
+          <MobileNavLink href="/brands" icon={Tag} label="Brands" onNavigate={closeMobileMenu} />
+          <MobileNavLink href="/wishlist" icon={Heart} label="Wishlist" onNavigate={closeMobileMenu} />
+          <MobileNavLink href="/Cart" icon={ShoppingCart} label="Cart" onNavigate={closeMobileMenu} />
+
+          <div className="border-b border-gray-100 py-3">
+            <div className="flex items-center gap-3 text-sm font-semibold text-gray-800">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
+                <LayoutGrid className="h-4 w-4" />
+              </span>
+              Categories
+            </div>
+            <ul className="mt-2 space-y-1 pl-12">
+              {categoryLinks.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={closeMobileMenu}
+                    className="block py-2 text-sm text-gray-600 hover:text-emerald-500"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {isUserauthenticated ? (
+            <>
+              <div className="flex items-center gap-3 border-b border-gray-100 py-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
+                  <UserRound className="h-4 w-4" />
+                </span>
+                <span className="text-sm font-medium text-gray-800">{userName}</span>
+              </div>
+              <button
+                type="button"
+                onClick={handleLogOut}
+                className="flex w-full items-center gap-3 py-3 text-sm font-medium text-red-500 hover:text-red-600"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-50 text-red-500">
+                  <IoIosLogOut className="h-4 w-4" />
+                </span>
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <MobileNavLink href="/login" icon={UserRound} label="Sign In" onNavigate={closeMobileMenu} />
+              <MobileNavLink href="/register" icon={UserPlus} label="Sign Up" onNavigate={closeMobileMenu} />
+            </>
+          )}
+        </div>
+      )}
+      </div>
     </div>
+  )
+}
+
+function MobileNavLink({
+  href,
+  icon: Icon,
+  label,
+  onNavigate,
+}: {
+  href: string
+  icon: React.ComponentType<{ className?: string }>
+  label: string
+  onNavigate: () => void
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onNavigate}
+      className="flex items-center gap-3 border-b border-gray-100 py-3 text-sm font-medium text-gray-700 hover:text-emerald-500"
+    >
+      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
+        <Icon className="h-4 w-4" />
+      </span>
+      {label}
+    </Link>
   )
 }
 

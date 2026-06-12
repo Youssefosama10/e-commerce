@@ -11,7 +11,7 @@ export default async function Shop() {
       <Header 
         title={"All Products"} 
         desc={"Explore our complete collection"} 
-        color={"from-green-500 to-green-700"} 
+        color={"bg-green-500"} 
       />
       
       <div className="container mx-auto px-4 py-10">
