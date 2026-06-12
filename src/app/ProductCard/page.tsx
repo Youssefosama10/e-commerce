@@ -9,10 +9,13 @@ import { MdDone } from "react-icons/md";
 import { useCart, useWishlist } from "../_Context/cardtContext";
 import { toast } from "react-toastify";
 import { AddProductwishlist } from "../wishlist/wishlistActions";
+import { useSession } from "next-auth/react";
 
 export default function ProductCard( {product}: ProductCardProps ) {
  const { setwishlist } = useWishlist()
  const { setItemCart} = useCart()
+ const session =  useSession()
+  const isUserauthenticated = session.status === "authenticated"
  
   const [addcard, setaddcard] = useState(false)
 
@@ -20,10 +23,12 @@ export default function ProductCard( {product}: ProductCardProps ) {
     {  
       setaddcard(true)
       const newItem =  await AddProductCard(product.id)
-      if(newItem != false)
+      if(newItem != false && isUserauthenticated)
       {
+        
         toast.success("Product added successfully to your cart")
         setItemCart(newItem)
+
       }
       else
       {

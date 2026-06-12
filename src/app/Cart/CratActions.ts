@@ -28,7 +28,7 @@ export async function AddProductCard( id : string )
        {
         const finalRes = await res.json()
        console.log('finalRes to add' , finalRes);
-       return finalRes.numOfCartItems
+       return finalRes.numOfCartItems 
        }
        else 
        {

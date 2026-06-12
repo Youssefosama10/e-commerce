@@ -80,12 +80,12 @@ export default function MobileApp() {
                 placeholder="you@example.com"
                 className="flex-1 border border-slate-200 rounded-xl px-5 py-3 text-sm text-slate-700 outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition bg-slate-50 placeholder-slate-400"
               />
-              <button
-                onClick={handleSubscribe}
-                className="bg-green-500 hover:bg-green-600 active:scale-95 text-white font-semibold text-sm px-6 py-3 rounded-xl flex items-center gap-2 transition-all whitespace-nowrap shadow"
-              >
-                {subscribed ? "✓ Subscribed!" : <>Subscribe <HiArrowRight /></>}
-              </button>
+            <button
+  onClick={handleSubscribe}
+  className="hidden sm:flex bg-green-500 hover:bg-green-600 active:scale-95 text-white font-semibold text-sm px-6 py-3 rounded-xl items-center gap-2 transition-all whitespace-nowrap shadow"
+>
+  {subscribed ? "✓ Subscribed!" : <>Subscribe <HiArrowRight /></>}
+</button>
             </div>
             <p className="text-xs text-slate-400 mt-3 flex items-center gap-1">
               <FaBolt className="text-yellow-400" /> Unsubscribe anytime. No spam, ever.
