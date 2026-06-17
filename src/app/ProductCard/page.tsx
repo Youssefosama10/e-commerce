@@ -32,7 +32,7 @@ export default function ProductCard( {product}: ProductCardProps ) {
       }
       else
       {
-        toast.error("Product addition failed")
+        toast.error("Please login to add product to cart")
       }
 
        setaddcard(false)      
@@ -51,7 +51,7 @@ export default function ProductCard( {product}: ProductCardProps ) {
       }
       else
       {
-        toast.error("Product addition failed")
+        toast.error("Please login to add product to wishlist")
       }
 
   }

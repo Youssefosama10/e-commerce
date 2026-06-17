@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { FaEnvelope, FaLock, FaShieldAlt, FaArrowLeft, FaCheck } from 'react-icons/fa';
 import { FaKey } from 'react-icons/fa6';
 import { verifyResetCodeAction } from '../passwordReset/passwordReset.Actions';
+import Link from 'next/link';
 type FormData = {
   code: string;
 };
@@ -197,10 +198,13 @@ export default function VerificationPage() {
           </form>
 
           {/* Change Email Address Link */}
-          <button type="button" className="flex items-center justify-center gap-2 text-slate-500 font-medium mx-auto mt-8 hover:text-slate-800 transition-colors">
+      <Link href='/ForgotPassword'>
+      
+      <button type="button" className="flex items-center cursor-pointer justify-center gap-2 text-slate-500 font-medium mx-auto mt-8 hover:text-slate-800 transition-colors">
             <FaArrowLeft className="text-sm" />
             Change email address
           </button>
+      </Link>
           
         </div>
       </div>

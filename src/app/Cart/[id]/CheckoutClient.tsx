@@ -1,5 +1,4 @@
 'use client'
-
 import { FaArrowLeft, FaCheckCircle, FaShieldAlt, FaShoppingBag } from "react-icons/fa"
 import { createCashOrder, createOnlienOrder } from "../CratActions"
 import { useRouter } from "next/navigation"

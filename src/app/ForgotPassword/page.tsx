@@ -1,11 +1,11 @@
 'use client';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { FaEnvelope, FaLock, FaShieldAlt, FaArrowLeft } from 'react-icons/fa';
 import { forgotPasswordAction } from '../passwordReset/passwordReset.Actions';
+import Link from 'next/link';
 type FormData = {
   name: string;
   email: string;
@@ -60,6 +60,7 @@ export default function ForgotPassword() {
               <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center rotate-[-10deg]">
                 <FaEnvelope className="text-green-500 text-2xl" />
               </div>
+              
 
               <div className="w-32 h-32 bg-white rounded-[30px] shadow-xl flex items-center justify-center">
                 <div className="w-24 h-24 bg-green-100 rounded-3xl flex items-center justify-center">
@@ -173,16 +174,21 @@ export default function ForgotPassword() {
           {/* Button */}
 
           {/* Back */}
-          <button className="flex items-center justify-center gap-2 text-green-600 font-medium mx-auto mt-8">
+         <Link href='/login'>
+         
+         <button className="flex items-center cursor-pointer justify-center gap-2 text-green-600 font-medium mx-auto mt-8">
             <FaArrowLeft />
             Back to Sign In
           </button>
 
+         </Link>
           <div className="border-t mt-10 pt-8 text-center text-slate-600">
             Remember your password?{' '}
-            <span className="text-green-600 font-semibold cursor-pointer">
+         <Link href='/login' >
+         <span className="text-green-600 font-semibold cursor-pointer">
               Sign In
             </span>
+         </Link>
           </div>
         </div>
       </div>
